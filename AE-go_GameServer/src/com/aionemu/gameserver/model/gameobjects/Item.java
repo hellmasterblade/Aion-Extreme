@@ -44,16 +44,32 @@ public class Item extends AionObject
 		super(objId);
 	}
 	
+	/**
+	 * @param objId
+	 * @param itemTemplate
+	 * @param itemCount
+	 * @param isEquipped
+	 * @param equipmentSlot
+	 * 
+	 * This constructor should be called from ItemService
+	 * for newly created items and loadedFromDb
+	 */
+	public Item(int objId, ItemTemplate itemTemplate, int itemCount, boolean isEquipped, int equipmentSlot)
+	{
+		super(objId);
+		
+		this.itemTemplate = itemTemplate;
+		this.itemCount = itemCount;
+		this.isEquipped = isEquipped;
+		this.equipmentSlot = equipmentSlot;
+	}
+	
+	@Deprecated
 	public Item(int objId, int itemId, int itemCount, int isEquipped, int equipmentSlot)
 	{
 		super(objId);
 		
 		this.itemTemplate = DataManager.ITEM_DATA.getItemTemplate(itemId);
-		if(itemTemplate == null)
-		{
-			log.error("Item was not populated correctly. Item template is missing for item id: " + itemId);
-		}
-		
 		this.itemCount = itemCount;
 		this.isEquipped = isEquipped == 1 ? true : false;
 		this.equipmentSlot = equipmentSlot;

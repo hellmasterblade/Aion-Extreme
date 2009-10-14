@@ -87,7 +87,7 @@ public class CM_BUY_ITEM extends AionClientPacket
 				ItemTemplate itemTemplate = DataManager.ITEM_DATA.getItemTemplate(itemId);
 				
 				assert itemTemplate != null : itemId;
-				
+				//TODO from ItemService
 				Item item = new Item(aionObjectsIDFactory.nextId());
 				item.setItemTemplate(itemTemplate);
 				item.setItemCount(count);
